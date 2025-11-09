@@ -16,4 +16,4 @@ namespace son8::insignia {
 
 }
 
-#endif
+#endif//SON8_IMPL_INSIGNIA_HXX
