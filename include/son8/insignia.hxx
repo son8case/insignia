@@ -26,21 +26,21 @@ namespace son8::insignia {
         Pointer( ) : data_{ Create{}( ) } { }
        ~Pointer( ) noexcept { Delete{}( data_ ); }
         Pointer( Copy copy ) : data_{ Create{}( *copy.data_ ) } { }
-        Pointer( Move move ) : data_{ move.data_ } { move.data_ = nullptr; }
+        Pointer( Move move ) noexcept : data_{ move.data_ } { move.data_ = nullptr; }
         void operator=( Copy copy ) {
             auto temp = copy;
             auto t = temp.data_;
             temp.data_ = data_;
             data_ = t;
         }
-        void operator=( Move move ) {
+        void operator=( Move move ) noexcept {
             Delete{}( data_ );
             data_ = move.data_;
             move.data_ = nullptr;
         }
         // pointer accessors
-        auto operator->( ) noexcept -> Type * { return data_; }
-        auto operator*( ) noexcept -> Type & { return *data_; }
+        auto operator->( ) const noexcept -> Type * { return data_; }
+        auto operator*( ) const noexcept -> Type & { return *data_; }
     };
 
 } // namespace
