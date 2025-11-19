@@ -12,7 +12,7 @@ namespace son8::insignia {
     auto Creator< Type >::operator()( Type const &data ) const -> Type * { return new Type{ data }; }
 
     template< typename Type >
-    auto Creator< Type >::operator()( Type *data ) const { delete data; }
+    void Creator< Type >::operator()( Type *data ) const noexcept { delete data; }
 
 }
 

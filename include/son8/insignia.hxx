@@ -10,7 +10,7 @@ namespace son8::insignia {
         // copy constructor
         auto operator()( Type const &data ) const -> Type *;
         // default destructor
-        auto operator()( Type *data ) const;
+        void operator()( Type *data ) const noexcept;
     };
 
     template< typename Type >
